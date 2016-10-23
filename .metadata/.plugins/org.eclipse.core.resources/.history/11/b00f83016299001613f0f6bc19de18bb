@@ -1,0 +1,42 @@
+
+public class Thermostat {
+
+	public static void main(String[] args) {
+		System.out.println("check");
+		float tMin = 15;
+		float tMax = 20;
+		double tCur = 18.0;
+		float[] outsideTemp = new float[] {10, 25, 30};
+		
+		for(int i = 0; i<outsideTemp.length; i++){
+			while(mixTemp(outsideTemp[i], tCur)<tMin)tCur = heat(tCur);
+			while(mixTemp(outsideTemp[i], tCur)>tMax)tCur = cool(tCur);
+			if(mixTemp(outsideTemp[i], tCur) >= tMin && mixTemp(outsideTemp[i], tCur) <= tMax) {
+				System.out.println("passt so");
+				System.out.println(i + ". " + mixTemp(outsideTemp[i], tCur));
+				continue;
+			}
+		}
+	}
+	
+	static double heat(Double temp){
+		temp = temp + 5.0;
+		return temp;
+	}
+	
+	static double cool(Double temp){
+		temp = temp - 5.0;
+		return temp;
+	}
+	
+	static double passive(Double temp){
+		temp = temp;
+		return temp;
+	}
+	
+	static double mixTemp(Float outTemp, Double inTemp){
+		double mixTemp = (outTemp + inTemp)/2;
+		return mixTemp;
+	}
+
+}
