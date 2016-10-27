@@ -14,15 +14,17 @@ public class Thermostat {
 			
 			if(mixTemp(outsideTemp[i], tCur)<tMin) 		{
 				// heating
-				while(mixTemp(outsideTemp[i], tCur)<tMin) tCur = heat(tCur); System.out.println("Heat to "+ tCur); 
+				while(mixTemp(outsideTemp[i], tCur)<tMin) tCur = heat(tCur); 
+				System.out.println("Heat to "+ tCur +"	-> 		roomtemperature @ "+ mixTemp(outsideTemp[i], tCur)); 
 			}
 			else if(mixTemp(outsideTemp[i], tCur)>tMax)	{
 				// cooling
-				while(mixTemp(outsideTemp[i], tCur)>tMax) tCur = cool(tCur); System.out.println("Cool to "+ tCur); 
+				while(mixTemp(outsideTemp[i], tCur)>tMax) tCur = cool(tCur); 
+				System.out.println("Cool to "+ tCur +"	->		roomtemperature @ "+ mixTemp(outsideTemp[i], tCur)); 
 			}
 			else if((mixTemp(outsideTemp[i], tCur)>tMin && (mixTemp(outsideTemp[i], tCur) <tMax))) {
 				// keeping
-				pass(tCur); System.out.println("Nice at "  + tCur); 
+				pass(tCur); System.out.println("Nice at "  + tCur +"	-> 		roomtemperature @ "+ mixTemp(outsideTemp[i], tCur)); 
 			}
 		}
 	}
